@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SneakerStore</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <img src="i (5).webp" alt="Логотип">
+      <h1>SneakerStore</h1>
+    </div>
+    <nav>
+      <a href="#">Главная</a>
+      <a href="#about">О нас</a>
+      <a href="#how">Как надо</a>
+      <a href="#products">Товары</a>
+      <a href="#color">По цвету</a>
+      <a href="#" class="modal-link" data-modal="brands">Бренды</a>
+      <a href="#" class="modal-link" data-modal="delivery">Доставка</a>
+      <a href="#" class="modal-link" data-modal="reviews">Отзывы</a>
+      <a href="#" class="modal-link" data-modal="contacts">Контакты</a>
+    </nav>
+  </header>
+
+  <section id="about" class="about">
+    <h2>О нас</h2>
+    <p>
+      SneakerStore — это место, где стиль встречается с комфортом. Мы подбираем только лучшие кроссовки от ведущих брендов, чтобы каждая пара вдохновляла тебя двигаться вперёд.  
+      У нас — оригиналы, качество и свежие релизы, которые оценят и спортсмены, и любители уличной моды.
+    </p>
+    <button onclick="scrollToProducts()">Посмотреть товары</button>
+  </section>
+
+  <section id="products" class="products">
+    <h2>Наши модели</h2>
+    <div class="product-list">
+      <div class="product">
+        <img src="i (1).webp" alt="Nike White">
+        <h3>Nike Air Force 1</h3>
+        <p>Легендарная модель с чистым стилем и комфортом на каждый день.</p>
+      </div>
+      <div class="product">
+        <img src="i (2).webp" alt="Adidas Black">
+        <h3>Adidas Ultraboost</h3>
+        <p>Максимальная амортизация и стиль для бега и повседневности.</p>
+      </div>
+      <div class="product">
+        <img src="i (3).webp" alt="Nike Grey">
+        <h3>Nike Air Max</h3>
+        <p>Классический силуэт с воздушной подошвой для мягкой походки.</p>
+      </div>
+      <div class="product">
+        <img src="i (9).webp" alt="Jordan Orange">
+        <h3>Air Jordan Retro</h3>
+        <p>Икона баскетбольного стиля, вдохновлённая наследием Майкла Джордана.</p>
+      </div>
+      <div class="product">
+        <img src="i (10).webp" alt="Nike Blue">
+        <h3>Nike Air Max 270</h3>
+        <p>Современный дизайн и инновационная подошва для максимального комфорта.</p>
+      </div>
+    </div>
+  </section>
+
+  
+  <div class="modal" id="brands">
+    <div class="modal-content">
+      <h2>Наши бренды</h2>
+      <p><a href="https://www.nike.com" target="_blank">Nike</a></p>
+      <p><a href="https://www.adidas.com" target="_blank">Adidas</a></p>
+      <p><a href="https://www.puma.com" target="_blank">Puma</a></p>
+      <button class="close">Закрыть</button>
+    </div>
+  </div>
+
+  <div class="modal" id="delivery">
+    <div class="modal-content">
+      <h2>Доставка</h2>
+      <p><a href="https://www.dhl.com" target="_blank">DHL</a></p>
+      <p><a href="https://www.fedex.com" target="_blank">FedEx</a></p>
+      <button class="close">Закрыть</button>
+    </div>
+  </div>
+
+  <div class="modal" id="reviews">
+    <div class="modal-content">
+      <h2>Отзывы</h2>
+      <p><a href="https://trustpilot.com" target="_blank">Trustpilot</a></p>
+      <p><a href="https://www.yelp.com" target="_blank">Yelp</a></p>
+      <button class="close">Закрыть</button>
+    </div>
+  </div>
+
+  <div class="modal" id="contacts">
+    <div class="modal-content">
+      <h2>Контакты</h2>
+      <p><a href="https://instagram.com" target="_blank">Instagram</a></p>
+      <p><a href="https://telegram.org" target="_blank">Telegram</a></p>
+      <button class="close">Закрыть</button>
+    </div>
+  </div>
+
+  <script>
+    function scrollToProducts() {
+      document.getElementById("products").scrollIntoView({ behavior: "smooth" });
+    }
+
+    const links = document.querySelectorAll(".modal-link");
+    const modals = document.querySelectorAll(".modal");
+    const closes = document.querySelectorAll(".close");
+
+    links.forEach(link => {
+      link.addEventListener("click", e => {
+        e.preventDefault();
+        const modal = document.getElementById(link.dataset.modal);
+        modal.style.display = "flex";
+      });
+    });
+
+    closes.forEach(btn => {
+      btn.addEventListener("click", () => {
+        modals.forEach(m => m.style.display = "none");
+      });
+    });
+
+    window.addEventListener("click", e => {
+      modals.forEach(m => {
+        if (e.target === m) m.style.display = "none";
+      });
+    });
+  </script>
+
+</body>
+</html>
